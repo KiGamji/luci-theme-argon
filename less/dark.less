@@ -1102,6 +1102,13 @@ input,
     }
 }
 
+/**
+ * When logging in first, the LuCI URI is `/cgi-bin/luci/`,
+ * not `/cgi-bin/luci/admin/status/overview`,
+ * which only appears after forcefully clicking on `data-title="Overview"`.
+ * Append empty `data-page` here as a workaround.
+ */
+[data-page=""],
 [data-page="admin-status-overview"] {
     .ifacebox-head > div[style*="--zone-color-rgb:144, 240, 144;"] {
         background-color: #0037ff !important;
