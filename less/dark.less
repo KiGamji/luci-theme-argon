@@ -651,9 +651,12 @@ fieldset[id^="cbi-apply-"] {
     background-color: var(--dark-primary) !important;
 }
 
-header .fill .status span[data-style="active"] {
-    color: #fff !important;
+span[data-style="active"] {
     background-color: #3144b3 !important;
+}
+
+span[data-style="inactive"] {
+    background-color: #32325d !important;
 }
 
 #cbi-wireless .td,
@@ -686,33 +689,36 @@ td > .ifacebadge,
     opacity: 1 !important;
 }
 
-.alert, .alert-message {
+.alert-message {
     background-color: #333;
-}
 
-.alert-message.warning {
-    background-color: #986400 !important;
-}
+    /* todo: use different color */
+    &.warning {
+        background-color: #6b0015 !important;
+        color: #f4496b !important;
+    }
 
-.alert-message.error {
-    background-color: #6b0015;
-    color: #f4496b;
-}
+    &.error, &.danger {
+        background-color: #6b0015 !important;
+        color: #f4496b !important;
+    }
 
-.alert-message.error h4 {
-    background-color: #6b0015;
-    color: #ed5c79
-}
+    h4 {
+        background-color: #6b0015 !important;
+        color: #ed5c79 !important;
+    }
 
-.alert-message.error [class="btn"] {
-    border-color: #84001a !important;
-    background-color: #84001a;
-    color: #ff7590
-}
+    &.error [class="btn"] {
+        border-color: #84001a !important;
+        background-color: #84001a;
+        color: #ff7590;
+    }
 
-.alert-message [class="btn"] {
-    background-color: #4f4f4f;
-    color: #e7e7e7;
+    [class="btn"] {
+        border-color: #4f4f4f !important;
+        background-color: #4f4f4f;
+        color: #e7e7e7;
+    }
 }
 
 .uci-dialog {
@@ -825,14 +831,27 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
 [data-page="admin-system-flash"] {
     .modal {
         label > input[type="checkbox"] {
-            vertical-align: text-top;
-            top: auto;
             border-color: #fff !important;
         }
 
-        .btn {
-            white-space: normal !important;
-            background-color: darkseagreen;
+        button.btn {
+            background-color: #c60000 !important;
+            border-color: #c60000 !important;
+        }
+
+        label.btn,
+        button.btn.cbi-button {
+            background-color: #2378bd !important;
+            border-color: #2378bd !important;
+        }
+
+        button.btn.cbi-button-action {
+            background-color: #4e00a7 !important;
+            border-color: #4e00a7 !important;
+        }
+
+        ul li {
+            color: #878c96;
         }
 
         .alert-message {
@@ -847,7 +866,6 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
 }
 
 .cbi-value input[type="password"] + .cbi-button-neutral {
-    background-color: #483d8b !important;
     background-color: var(--dark-primary) !important;
     border-color: var(--dark-primary) !important;
 }
@@ -878,10 +896,6 @@ input,
     background-color: darkolivegreen !important;
 }
 
-[data-page="admin-system-flash"] legend {
-    color: #ccc;
-}
-
 .logout:before {
     color: #adb5bd !important;
 }
@@ -896,8 +910,6 @@ input,
     color: #ffffff !important;
     box-shadow: none;
     border: 1px solid #3c3c3c !important;
-
-
 }
 
 .cbi-dropdown[open] > ul.dropdown li {
@@ -935,7 +947,6 @@ input,
 .cbi-button[value="Upload"],
 .cbi-button[value$="Apply"],
 .cbi-button[onclick="addKey(event)"] {
-    background: #483d8b !important;
     background: var(--dark-primary) !important;
     border-color: var(--dark-primary) !important;
 }
@@ -952,6 +963,7 @@ input,
 .cbi-button[value^="Back"],
 .cbi-button-neutral[onclick="handleConfig(event)"] {
     background: #1f4287;
+    border-color: #1f4287 !important;
 }
 
 [data-page="admin-system-opkg"] h2 {
@@ -1000,8 +1012,6 @@ input,
         background-color: #1e1e1e;
         box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, .35);
     }
-
-
 }
 
 [data-page="admin-dashboard"] {
@@ -1109,6 +1119,15 @@ input,
         background-color: #232323 !important;
         opacity: 0.4 !important;
     }
+
+
+    .ifacebadge .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
+        background-color: #4b70f5 !important;
+    }
+
+    .ifacebadge .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
+        background-color: #7e44ea !important;
+    }
 }
 
 [data-page="admin-network-network"] {
@@ -1137,39 +1156,45 @@ input,
     }
 
     #modal_overlay > .modal.cbi-modal > div > p > textarea {
-        color: #ccc!important;
+        color: #ccc !important;
     }
 }
 
-[data-page="admin-network-firewall-rules"] {
-    #cbi-firewall-rule {
-        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
-            --zone-color-rgb: 156, 79, 79 !important;
+[data-page="admin-network-firewall-zones"] {
+    .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
+        background-color: #4b70f5 !important;
 
-            strong {
-                color: #ccc !important;
-            }
+        strong {
+            color: #ccc !important;
         }
+    }
 
-        .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
-            --zone-color-rgb: 112, 112, 112 !important;
+    .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
+        background-color: #7e44ea !important;
 
-            em {
-                color: #ccc !important;
-            }
+        strong {
+            color: #ccc !important;
         }
+    }
 
-        > table > .cbi-section-table-row[data-title]::before {
-            background-color: #282828 !important;
+    .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
+        background-color: #666 !important;
+
+        em {
+            color: #ccc !important;
         }
+    }
+
+    > table > .cbi-section-table-row[data-title]::before {
+        background-color: #282828 !important;
     }
 }
 
 [data-page="admin-network-network"],
-[data-page="admin-network-firewall-rules"] {
+[data-page="admin-network-firewall-zones"] {
     .cbi-dropdown {
-        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
-            --zone-color-rgb: 156, 79, 79 !important;
+        .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
+            background-color: #4b70f5 !important;
             color: #ccc !important;
 
             strong {
@@ -1177,8 +1202,8 @@ input,
             }
         }
 
-        .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
-            --zone-color-rgb: 73, 126, 73 !important;
+        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
+            background-color: #7e44ea !important;
             color: #ccc !important;
 
             strong {
@@ -1187,7 +1212,7 @@ input,
         }
 
         .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
-            --zone-color-rgb: 112, 112, 112 !important;
+            background-color: #666 !important;
 
             strong {
                 color: #ccc !important;
